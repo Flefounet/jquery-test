@@ -1,0 +1,15 @@
+{
+  "name": "jquery-projet",
+  "description": "un projet pour rigoler avec jquery",
+  "main": "",
+  "license": "M2I",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

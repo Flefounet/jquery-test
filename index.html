@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Première page Jquery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+
+    <link rel="stylesheet" href="bower_assets/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_assets/bootstrap/dist/css/bootstrap-theme.min.css">
+
+</head>
+
+<body class="container-fluid">
+
+
+    <div class="row">
+        <a id="button" title="button">Press Me</a>
+        <div class="col-md-6">première section</div>
+        <div class="col-md-5">deuxième section</div>
+        <div class="col-md-6">troisième section</div>
+
+    </div>
+    <form>
+        <div class="form-group">
+            <input class="form-control" type="text" id="inputText" placeholder="votre texte ici">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">envoi</button>
+
+        </div>
+    </form>
+    <div class="col-md-6">
+        <ul class="list-group" id="menu">
+            <li class="list-group-item">fruits
+                <ul class="list-group">
+                    <li class="list-group-item">pommes</li>
+                    <li class="list-group-item">nananas</li>
+                </ul>
+            </li>
+            <li class="list-group-item">'gum
+                <ul class="list-group">
+                    <li class="list-group-item">Kourget'</li>
+                    <li class="list-group-item">Bergin'</li>
+                </ul>
+            </li>
+            <li class="list-group-item">'Gumineuz
+                <ul class="list-group">
+                    <li class="list-group-item">Lentye</li>
+                    <li class="list-group-item">Faio</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="bower_assets/jquery/dist/jquery.min.js"></script>
+    <script src="bower_assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var $list = $("#list");
+            var $input = $("#input");
+            var $form = $("#form");
+
+            $form.submit(function(e) {
+                e.preventDefault();
+
+                var newValue = $input.val();
+                var $li = $("<li>").text(newValue);
+
+                $list.append($li);
+            });
+
+            //masquer tout les élement de deuxième niveau
+            var $secondLevel = $("#menu ul");
+            var $firstLevel = $("#menu>li");
+            
+            $firstLevel.css("cursor","pointer");
+            $secondLevel.find("li").css("background-color","red");
+            $secondLevel.hide();
+            //affiche preminer niveau
+            $firstLevel.click(function(e) {
+                $(this).children().toggle(1000);
+                $(this).toggleClass("active");
+                $firstLevel.not($(this))
+                    .removeClass("active")
+                    .children()
+                    .hide(1000);
+                console.log(this);
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
